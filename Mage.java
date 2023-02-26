@@ -7,7 +7,12 @@ class Mage extends Personnage implements Berseker, Healer{
         super(race, nom, ptnVie, ptnMana);
     }
     @Override
-    public void attaquer(Personnage p) {
+    public void attaquer(Personnage p) throws AttackException {
+    	
+    	if (p.ptnVie <= 0) {
+            throw new AttackException();
+    	} 
+    	
         if (!aAssezDeMana(15)) {
             System.out.println(nom + " n'a pas assez de mana pour attaquer !");
             return;
@@ -19,7 +24,8 @@ class Mage extends Personnage implements Berseker, Healer{
         System.out.println(nom + " lance un sort sur " + p.nom + " et lui inflige " + degats + " points de dégâts !");
     }
     @Override
-    public void soigner(Personnage p) {
+    public void soigner(Personnage p)  {
+    	
         Random rand = new Random();
         int mana = rand.nextInt(20) + 10;
         ptnMana += mana;

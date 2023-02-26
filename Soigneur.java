@@ -9,6 +9,8 @@ class Soigneur extends Personnage implements Healer {
 
     @Override
     public void soigner(Personnage p) {
+    	
+    	
         if (!aAssezDeMana(20)) {
             System.out.println(nom + " n'a pas assez de mana pour soigner !");
             return;

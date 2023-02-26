@@ -8,7 +8,12 @@ class Guerrier extends Personnage implements Berseker {
     }
 
     @Override
-    public void attaquer(Personnage p) {
+    public void attaquer(Personnage p) throws AttackException {
+    	
+    	if (p.ptnVie <= 0) {
+            throw new AttackException();  	
+    	}
+    	
         if (!aAssezDeMana(10)) {
             System.out.println(nom + " n'a pas assez de mana pour attaquer !");
             return;
